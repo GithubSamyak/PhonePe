@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private PaymentFragment paymentFragment;
     private TransactionsFragment transactionsFragment;
 
-    private BottomNavigationView.onNavigation
+
 
 
 
