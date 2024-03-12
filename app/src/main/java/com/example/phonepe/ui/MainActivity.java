@@ -7,7 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
 import androidx.core.view.WindowCompat;
@@ -21,7 +21,7 @@ import com.example.phonepe.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toolbar;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     {
         switch(item.getItemId())
         {
-            case R.id.navigation_home:toolbartext.settext("PhonePe");
+            case R.id.navigation_home:toolbartext.setText("PhonePe");
             setUpFragment(homeFragment);
             return true;
             case R.id.navigation_offer:
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.navigation_payment:
                 toolbartext.setText("Scan & Pay");
-                setUpfragment(paymentFragment);
+                setUpFragment(paymentFragment);
                 return true;
             case R.id.navigation_account:
                 toolbartext.setText("My Account");
