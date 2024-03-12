@@ -35,6 +35,42 @@ public class MainActivity extends AppCompatActivity {
     private PaymentFragment paymentFragment;
     private TransactionsFragment transactionsFragment;
 
+    private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
+            = item ->
+    {
+        switch(item.getItemId())
+        {
+            case R.id.navigation_home:toolbartext.settext("PhonePe");
+            setUpFragment(homeFragment);
+            return true;
+            case R.id.navigation_offer:
+                toolbartext.setText("Offers");
+                setUpFragment(offersFragment);
+                return true;
+
+            case R.id.navigation_payment:
+                toolbartext.setText("Scan & Pay");
+                setUpfragment(paymentFragment);
+                return true;
+            case R.id.navigation_account:
+                toolbartext.setText("My Account");
+                setUpFragment(accountFragment);
+                return true;
+            case R.id.navigation_transaction:
+                toolbartext.setText("Transactions");
+                setUpFragment(transactionsFragment);
+                return true;
+            default:
+                return false;
+        }
+    };
+
+
+
+
+
+
+
 
 
 
@@ -44,7 +80,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+       initViews();
+       setSupportActionBar(mToolbar);
+       getSupportActionBar().setTitle("");
+       toolbartext.setText("PhonePe");
+
+       bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
+
+
+
 
     }
 }
