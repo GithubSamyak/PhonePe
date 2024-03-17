@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpFragment(Fragment fragment) {
         FragmentTransaction FragmentTransaction_fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        frag
+
 
     }
 
