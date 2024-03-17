@@ -3,23 +3,15 @@ package com.example.phonepe.ui;
 import android.os.Bundle;
 
 import com.example.phonepe.R;
+import com.example.phonepe.helper.BottomNavHelp;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.view.View;
 
-import androidx.core.view.WindowCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.example.phonepe.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 
@@ -66,15 +58,11 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
+    private void setUpFragment(Fragment fragment) {
+        FragmentTransaction FragmentTransaction_fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        frag
 
-
-
-
-
-
-
-
-
+    }
 
 
     @Override
@@ -86,9 +74,26 @@ public class MainActivity extends AppCompatActivity {
        toolbartext.setText("PhonePe");
 
        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
+        BottomNavHelp.removeShiftMode(bottomNavigationView);
+        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
+        beginTransaction.replace(R.id.home_view , homeFragment);
+        beginTransaction.commit();
 
 
 
 
+
+    }
+
+    private void initViews() {
+        setContentView(R.layout.activity_main);
+        mToolbar = findViewById(R.id.toolbar);
+        toolbartext = findViewById(R.id.title_toolbar);
+        bottomNavigationView = findViewById(R.id.navigation);
+        homeFragment = HomeFragment.newInstance();
+        accountFragment = AccountFragment.newInstance();
+        offersFragment = OffersFragment.newInstance();
+        paymentFragment = PaymentFragment.newInstance();
+        transactionsFragment = TransactionsFragment.newInstance();
     }
 }
