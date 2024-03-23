@@ -6,13 +6,17 @@ import com.example.phonepe.R;
 import com.example.phonepe.helper.BottomNavHelp;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -58,8 +62,14 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    private void setUpFragment(Fragment fragment) {
-        FragmentTransaction FragmentTransaction_fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+    private void setUpFragment(Fragment fragment)
+    {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+        fragmentTransaction.replace(R.id.home_view,fragment);
+        fragmentTransaction.commit();
+
 
 
     }
@@ -96,4 +106,30 @@ public class MainActivity extends AppCompatActivity {
         paymentFragment = PaymentFragment.newInstance();
         transactionsFragment = TransactionsFragment.newInstance();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId())
+        {
+            case R.id.notify:
+                Toast.makeText(this,"Notification" , Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.scanNpay:
+                Toast.makeText(this,"Scan any code" , Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
